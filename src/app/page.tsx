@@ -18,7 +18,7 @@ export default function Home() {
 
           // отправляем координаты в наш API
           try {
-            const res = await fetch("/api/send-tg", {
+            const res = await fetch("/api/sendMessage", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ lat, lon }),
@@ -43,11 +43,34 @@ export default function Home() {
     }
   }, []);
 
+  const handleSubmit = async () => {
+    const lat = 0;
+    const lon = 5;
+    try {
+      const res = await fetch("/api/sendMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lat, lon }),
+      });
+
+      const data = await res.json();
+      if (data.ok) {
+        console.log("✅ Геолокация успешно отправлена в Telegram");
+      } else {
+        console.error("❌ Ошибка при отправке:", data.error);
+      }
+    } catch (error) {
+      console.error("Ошибка отправки в Telegram:", error);
+    }
+  };
   return (
     <div className="">
       <Image src={"/1.jpg"} width={500} height={500} alt="map" />
       <div className="">{location?.lat}</div>
       <div className="">{location?.lon}</div>
+      <button className="text-white" onClick={() => handleSubmit()}>
+        Send Test
+      </button>
     </div>
   );
 }

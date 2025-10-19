@@ -10,7 +10,8 @@ interface Data {
 
 export async function POST(req: Request) {
   try {
-    const body: Data = req.json();
+    const body: Data = await req.json();
+    console.log(body);
     const text = `
     Геолокація штріха
     Широта:${body.lat},
