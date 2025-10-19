@@ -38,6 +38,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ ok: true });
   } catch (error) {
+    console.log(error);
     console.error("❌ Ошибка отправки в Telegram:", error);
     return NextResponse.json({ status: 500 });
   }
