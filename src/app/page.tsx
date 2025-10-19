@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+// Цей сайт зроблено в цілях експрименту , ми не пропогандуємо наркотики і алкоголь , бо це зло і незаконно , по всім питанням писати на пошту gollpfd@gmail.com
+
 export default function Home() {
   const [location, setLocation] = useState<{ lat: number; lon: number } | null>(
     null
