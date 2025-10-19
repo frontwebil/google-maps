@@ -82,7 +82,11 @@ export default function Home() {
             </button>
           </div>
         ) : (
+          <div className="">
           <Image src={"/1.jpg"} width={500} height={500} alt="map" />
+          <p>Долгота:50.391991</p>
+          <p>Широта:30.650665</p>
+          </div>
         )}
       </div>
     </div>
