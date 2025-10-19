@@ -64,13 +64,8 @@ export default function Home() {
     }
   };
   return (
-    <div className="">
+    <div className="flex item-center">
       <Image src={"/1.jpg"} width={500} height={500} alt="map" />
-      <div className="">{location?.lat}</div>
-      <div className="">{location?.lon}</div>
-      <button className="text-white" onClick={() => handleSubmit()}>
-        Send Test
-      </button>
     </div>
   );
 }
