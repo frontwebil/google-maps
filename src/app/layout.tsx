@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "50.393842, 30.646063",
+  title: "50.3???, 30.6???",
   description: "Местоположение на карте",
   openGraph: {
-    title: "50.393842, 30.646063",
+    title: "50.3???, 30.6???",
     description: "Местоположение на карте",
     images: [
       {
